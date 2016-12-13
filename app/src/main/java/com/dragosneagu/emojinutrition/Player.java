@@ -113,7 +113,8 @@ public class Player {
             localPlayer.setAge(Integer.parseInt(jsonPlayer.getString("age")));
             localPlayer.setName(jsonPlayer.getString("name"));
             localPlayer.setLastFed(new SimpleDate(jsonPlayer.getString("last_fed")));
-            if (jsonPlayer.getString("gender") == "MALE"){
+            String a = jsonPlayer.getString("gender");
+            if (jsonPlayer.getString("gender").equals("MALE")){
                 localPlayer.setGender(Gender.MALE);
             }
             else {
