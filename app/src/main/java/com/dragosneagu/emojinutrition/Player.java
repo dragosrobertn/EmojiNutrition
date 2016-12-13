@@ -1,5 +1,8 @@
 package com.dragosneagu.emojinutrition;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Enumeration;
@@ -13,11 +16,25 @@ import java.util.Locale;
 public class Player {
     private String name;
     private int age;
-    private Enumeration<Gender> gender;
-    private SimpleDateFormat lastFed = new SimpleDateFormat("dd-M-yyyy hh:mm:ss", Locale.UK);
+    private Gender gender;
+    private SimpleDateFormat lastFed = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss", Locale.UK);
     private ArrayList<Lessons> lessons;
     private ArrayList<Food> foodUnlocked;
+    private JSONObject jsonPlayer;
+    private JSONArray jsonFood = new JSONArray();
 
+    // A few definitions for instantiating a Player object
+    public Player(JSONObject jsonPlayer) {
+        this.jsonPlayer = jsonPlayer;
+    }
+
+    public Player() {}
+
+    public Player(String name, int age, Gender gender) {
+        this.name = name;
+        this.age = age;
+        this.gender = gender;
+    }
 
     public ArrayList<Food> getFoodUnlocked() {
         return foodUnlocked;
@@ -43,11 +60,11 @@ public class Player {
         this.age = age;
     }
 
-    public Enumeration<Gender> getGender() {
+    public Gender getGender() {
         return gender;
     }
 
-    public void setGender(Enumeration<Gender> gender) {
+    public void setGender(Gender gender) {
         this.gender = gender;
     }
 
@@ -66,6 +83,13 @@ public class Player {
     public void setLessons(ArrayList<Lessons> lessons) {
         this.lessons = lessons;
     }
+
+    public boolean savePlayerFile(Player player) {
+
+        return true;
+    }
+
+    public void loadPlayerFile(){}
 
 
 }

@@ -94,4 +94,10 @@
     <string name="title_activity_register">Start</string>
     <string name="intro_text_view">You must be new around here. To get started, fill in this information! There might be something for you once you finish! %1$s</string>
     <string name="intro_finish_text">Let\'s play!️</string>
+    <string name="intro_your_name">Your name</string>
+    <string name="intro_age">Age</string>
+    <string name="intro_f">F</string>
+    <string name="intro_m">M</string>
+    <string name="intro_name">Name</string>
+    <string name="intro_your_age">Your age</string>
 </resources>

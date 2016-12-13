@@ -6,6 +6,11 @@ package com.dragosneagu.emojinutrition;
 
 public class Emoji {
 
+    public String getEmojiByUnicode(int unicode) {
+
+        return new String(Character.toChars(unicode));
+    }
+
     public String getEmojiCombinationByUnicode(int unicode1, int unicode2, int unicode3, int unicode4) {
         String full = new String();
 
