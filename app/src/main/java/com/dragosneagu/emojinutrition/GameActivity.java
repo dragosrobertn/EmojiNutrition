@@ -7,6 +7,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -20,6 +21,9 @@ public class GameActivity extends AppCompatActivity {
     FoodInventory foodInventory = new FoodInventory();
     LessonList lessonList = new LessonList();
 
+    Button lessonButton;
+    Button mixButton;
+
     TextView playerProfileGender;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +31,17 @@ public class GameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        lessonButton = (Button) findViewById(R.id.lessonButton);
+        mixButton = (Button) findViewById(R.id.mixButton);
+
+        mixButton.setTextSize(40f);
+        lessonButton.setTextSize(40f);
+        lessonButton.setText(String.format(getString(R.string.let_s_learn_something), emoji.getEmojiByUnicode(0x1F4D6)));
+        mixButton.setText(String.format(getString(R.string.game_mix_ingredients_text), emoji.getEmojiByUnicode(0x1F35B)));
+
+
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {

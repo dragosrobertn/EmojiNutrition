@@ -18,6 +18,7 @@
     <string name="fab_action_gma">Feed</string>
     <string name="title_activity_main">Emoji Nutrition</string>
     <string name="game_lessons_text">%1$s \n Lessons</string>
-    <string name="game_mix_ingredients_text">%1$s \n Mix Ingredients</string>
+    <string name="game_mix_ingredients_text">%1$s\nMix and Cook\nIngredients</string>
     <string name="mix">Mix</string>
+    <string name="let_s_learn_something">%1$s\nStart\nLearning!</string>
 </resources>
