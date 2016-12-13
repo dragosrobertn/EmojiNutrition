@@ -18,16 +18,26 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class GameMenuActivity extends AppCompatActivity {
     JSONObject saveFile;
+    Player player = new Player();
+    Food food = new Food();
+    StringBuilder playerStringBuilder;
+    ArrayList<Food> foodList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         // Check if a saved file exists already, if not, show startActivity
-        if (!checkOrLoadSaveFile(GameMenuActivity.this)) {
+        playerStringBuilder = player.checkPlayerFileExists(GameMenuActivity.this);
+
+        if (playerStringBuilder.length() > 0) {
+            player = player.loadPlayerFile(playerStringBuilder);
+        }
+        else {
             showStartActivity();
         }
 
@@ -64,35 +74,6 @@ public class GameMenuActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    private boolean checkOrLoadSaveFile(Context context) {
-        boolean found = false;
-        StringBuilder stringBuilder = new StringBuilder();
-        String line;
-        BufferedReader in = null;
-        try {
-            File fp = new File(context.getFilesDir(), "EmojiNutrition_SaveFile.json");
-            in = new BufferedReader(new FileReader(fp));
-            while ((line = in.readLine()) != null) {
-                stringBuilder.append(line);
-            }
-
-        } catch (FileNotFoundException e) {
-//            Log.d("ID", e.getMessage());
-        } catch (IOException e) {
-            //Log.d("ID", e.getMessage());
-        }
-
-        if (stringBuilder.length() > 0)
-        {
-            found = true;
-//            saveFile = (JSONObject)  ;
-        }
-
-        //Log.d("ID", stringBuilder.toString());
-
-        return found;
     }
 
     private void showStartActivity(){

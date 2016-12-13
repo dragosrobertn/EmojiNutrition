@@ -12,11 +12,19 @@ import java.util.Enumeration;
  */
 
 public class Food {
+    private String code;
     private String name;
     private String source;
     private String sourceDescription;
     //private Map<Enumeration state, boolean raw> foodState;
 
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
 
     public String getName() {
         return name;

@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * Created by dragosneagu on 01/12/2016.
  */
 
-public class Lessons {
+public class Lesson {
     private int lessonID;
     private String lessonTitle;
     private String lessonContent;

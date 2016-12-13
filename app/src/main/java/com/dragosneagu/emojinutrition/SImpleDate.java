@@ -6,7 +6,7 @@ import java.util.Date;
 import java.util.Locale;
 
 /**
- * Created by dragosneagu on 13/12/2016.
+ * Created by dragosneagu on 01/12/2016.
  */
 
 public class SimpleDate{

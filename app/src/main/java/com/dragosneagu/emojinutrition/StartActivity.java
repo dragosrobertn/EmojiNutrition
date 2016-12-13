@@ -95,7 +95,7 @@ public class StartActivity extends AppCompatActivity {
                     player.setName(playerName.getText().toString());
                     player.setAge(Integer.parseInt(playerAge.getText().toString()));
                     player.setGender(chosenGender);
-                     registrationSuccess = player.savePlayerFile(player);
+                     registrationSuccess = player.savePlayerFile(player, view.getContext());
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
