@@ -1,6 +1,7 @@
 package com.dragosneagu.emojinutrition;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -17,6 +18,15 @@ public class SimpleDate{
         this.date = new Date();
     }
 
+    public SimpleDate(String date) {
+        dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss", Locale.UK);
+        try {
+            this.date = dateFormat.parse(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+    }
+
     public String getCurrentDate() {
         dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.UK);
         return dateFormat.format(date);
@@ -26,6 +36,8 @@ public class SimpleDate{
         dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss", Locale.UK);
         return dateFormat.format(date);
     }
+
+
 
 
 }

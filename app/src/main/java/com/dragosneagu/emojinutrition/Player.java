@@ -2,21 +2,17 @@ package com.dragosneagu.emojinutrition;
 
 import android.content.Context;
 import android.util.Log;
-import android.util.StringBuilderPrinter;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Locale;
+import java.util.Date;
 
 /**
  * Created by dragosneagu on 01/12/2016.
@@ -26,33 +22,29 @@ public class Player {
     private String name;
     private int age;
     private Gender gender;
-    private SimpleDateFormat lastFed = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss", Locale.UK);
+    private SimpleDate lastFed = new SimpleDate();
     private ArrayList<Lesson> lessons;
     private ArrayList<Food> foodUnlocked;
-    private JSONObject jsonPlayer;
+    private JSONObject jsonPlayer = new JSONObject();
     private JSONArray jsonFood = new JSONArray();
     private JSONArray jsonLessons = new JSONArray();
 
-    // A few definitions for instantiating a Player object
-    public Player(JSONObject jsonPlayer) {
-        this.jsonPlayer = jsonPlayer;
-        // call something else here to actually build something;
-    }
-
-    public Player() {}
-
-    public Player(String name, int age, Gender gender) {
-        this.name = name;
-        this.age = age;
-        this.gender = gender;
+    public Player() {
+        this.name = new String();
+        this.gender = Gender.OTHER;
+        this.age = 0;
+        this.lastFed = new SimpleDate();
+        this.lessons = new ArrayList<>();
+        this.foodUnlocked = new ArrayList<>();
     }
 
     public ArrayList<Food> getFoodUnlocked() {
         return foodUnlocked;
     }
 
-    public void setFoodUnlocked(ArrayList<Food> foodUnlocked) {
-        this.foodUnlocked = foodUnlocked;
+    public void addUnlockedFood(Food foodUnlocked) {
+
+        this.foodUnlocked.add(foodUnlocked);
     }
 
     public String getName() {
@@ -79,11 +71,11 @@ public class Player {
         this.gender = gender;
     }
 
-    public SimpleDateFormat getLastFed() {
+    public SimpleDate getLastFed() {
         return lastFed;
     }
 
-    public void setLastFed(SimpleDateFormat lastFed) {
+    public void setLastFed(SimpleDate lastFed) {
         this.lastFed = lastFed;
     }
 
@@ -91,8 +83,8 @@ public class Player {
         return lessons;
     }
 
-    public void setLessons(ArrayList<Lesson> lessons) {
-        this.lessons = lessons;
+    public void addLesson(Lesson lesson) {
+        this.lessons.add(lesson);
     }
 
     public StringBuilder checkPlayerFileExists(Context context) {
@@ -114,10 +106,35 @@ public class Player {
         return stringBuilder;
     }
 
-    public Player loadPlayerFile(StringBuilder stringBuilder){
-        Player localPlayer;
+    public Player loadPlayerFile(StringBuilder stringBuilder, FoodInventory foodInventory, LessonList lessonList){
+        Player localPlayer = new Player();
+        try {
+            jsonPlayer = new JSONObject(stringBuilder.toString());
+            localPlayer.setAge(Integer.parseInt(jsonPlayer.getString("age")));
+            localPlayer.setName(jsonPlayer.getString("name"));
+            localPlayer.setLastFed(new SimpleDate(jsonPlayer.getString("last_fed")));
+            if (jsonPlayer.getString("gender") == "MALE"){
+                localPlayer.setGender(Gender.MALE);
+            }
+            else {
+                localPlayer.setGender(Gender.FEMALE);
+            }
+            jsonFood = new JSONArray(jsonPlayer.getJSONArray("food"));
+            jsonLessons = new JSONArray(jsonPlayer.getJSONArray("lessons"));
 
-        return localPlayer = new Player();
+            for (int i = 0; i < jsonFood.length(); i++) {
+            localPlayer.addUnlockedFood(foodInventory.getFromInventoryByCode(jsonFood.getJSONObject(i).toString()));
+            }
+
+            for (int i = 0; i < jsonFood.length(); i++) {
+                localPlayer.addLesson(lessonList.getFromListByID(jsonLessons.getJSONObject(i).toString()));
+            }
+        }
+        catch (JSONException e){
+            e.getMessage();
+        }
+
+        return localPlayer;
     }
 
     public boolean savePlayerFile(Player player, Context context) {
@@ -140,6 +157,7 @@ public class Player {
             jsonPlayer.put("name", player.getName());
             jsonPlayer.put("age", player.getAge());
             jsonPlayer.put("gender", player.getGender().toString());
+            jsonPlayer.put("last_fed", new SimpleDate().getCurrentDateAndTime());
             jsonPlayer.put("lessons", jsonLessons);
             jsonPlayer.put("food", jsonFood);
             return jsonPlayer.toString(2);
@@ -164,9 +182,5 @@ public class Player {
         }
         return localJSONLessons;
     }
-
-
-    public void loadPlayerFile(){}
-
 
 }

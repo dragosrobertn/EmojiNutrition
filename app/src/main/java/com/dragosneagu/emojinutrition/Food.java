@@ -50,7 +50,7 @@ public class Food {
         this.sourceDescription = sourceDescription;
     }
 
-    public AlertDialog foodUnlocked (Context context, Food unlockedFood) {
+    public AlertDialog newFoodUnlocked (Context context, Food unlockedFood) {
         AlertDialog.Builder f = new AlertDialog.Builder(context)
                 .setTitle("You've unlocked a new ingredient!")
                 .setMessage(String.format("You have unlocked %1$s. %2$s", unlockedFood.getName(), unlockedFood.getSourceDescription()))
@@ -60,4 +60,5 @@ public class Food {
                 });
         return f.show();
     }
+
 }

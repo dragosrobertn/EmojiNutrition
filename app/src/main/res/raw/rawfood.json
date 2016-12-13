@@ -1,0 +1,400 @@
+{
+  "food": {
+    "1F347": {
+      "code": "0x1F347",
+      "name": "Grapes",
+      "symbol": "🍇",
+      "calories": {
+        "small": "33",
+        "medium": "67",
+        "large": "134"
+      },
+      "source": "Vine",
+      "source_desc": "Grapes grow on vines",
+      "state": {
+        "raw": "1",
+        "mass": "mixed"
+      },
+      "type": "fruit",
+      "can_be_mixed": "1"
+    },
+    "1F348": {
+      "code": "0x1F348",
+      "name": "Melon",
+      "symbol": "🍈",
+      "calories": {
+        "small": "15",
+        "medium": "30",
+        "large": "60"
+      },
+      "source": "vine",
+      "source_desc": "Melon...",
+      "state": {
+        "raw": "1",
+        "mass": "solid"
+      },
+      "type": "fruit",
+      "can_be_mixed": "1"
+    },
+    "1F349": {
+      "code": "0x1F349",
+      "name": "Watermelon",
+      "symbol": "🍉",
+      "calories": {
+        "small": "15",
+        "medium": "30",
+        "large": "60"
+      },
+      "source": "vine",
+      "source_desc": "Watermelon...",
+      "state": {
+        "raw": "1",
+        "mass": "solid"
+      },
+      "type": "fruit",
+      "can_be_mixed": "1"
+    },
+    "1F34A": {
+      "code": "0x1F34A",
+      "name": "Tangerine",
+      "symbol": "🍊",
+      "calories": {
+        "small": "23",
+        "medium": "47",
+        "large": "94"
+      },
+      "source": "tree",
+      "source_desc": "Oranges come from orange trees",
+      "state": {
+        "raw": "1",
+        "mass": "solid"
+      },
+      "type": "fruit",
+      "can_be_mixed": "1"
+    },
+    "1F34B": {
+      "code": "0x1F34B",
+      "name": "lemon",
+      "symbol": "🍋",
+      "calories": {
+        "small": "15",
+        "medium": "29",
+        "large": "58"
+      },
+      "source": "tree",
+      "source_desc": "Lemons come from lemon trees",
+      "state": {
+        "raw": "1",
+        "mass": "solid"
+      },
+      "type": "fruit",
+      "can_be_mixed": "1"
+    },
+    "1F34C": {
+      "code": "0x1F34C",
+      "name": "banana",
+      "symbol": "🍌",
+      "calories": {
+        "small": "44",
+        "medium": "88",
+        "large": "176"
+      },
+      "source": "tree",
+      "source_desc": "Bananas come from banana trees",
+      "state": {
+        "raw": "1",
+        "mass": "solid"
+      },
+      "type": "fruit",
+      "can_be_mixed": "1"
+    },
+    "1F34D": {
+      "code": "0x1F34D",
+      "name": "Pineapple",
+      "symbol": "🍍",
+      "calories": {
+        "small": "25",
+        "medium": "50",
+        "large": "100"
+      },
+      "source": "tree",
+      "source_desc": "Pineapples come from pineapple trees",
+      "state": {
+        "raw": "1",
+        "mass": "solid"
+      },
+      "type": "fruit",
+      "can_be_mixed": "1"
+    },
+    "1F34E": {
+      "code": "0x1F34E",
+      "name": "Red apple",
+      "symbol": "🍎",
+      "calories": {
+        "small": "26",
+        "medium": "52",
+        "large": "104"
+      },
+      "source": "tree",
+      "source_desc": "Apples come from apple trees",
+      "state": {
+        "raw": "1",
+        "mass": "solid"
+      },
+      "type": "fruit",
+      "can_be_mixed": "1"
+    },
+    "1F34F": {
+      "code": "0x1F34F",
+      "name": "Green apple",
+      "symbol": "🍏",
+      "calories": {
+        "small": "26",
+        "medium": "52",
+        "large": "104"
+      },
+      "source": "tree",
+      "source_desc": "Apples come from apple trees",
+      "state": {
+        "raw": "1",
+        "mass": "solid"
+      },
+      "type": "fruit",
+      "can_be_mixed": "1"
+    },
+    "1F350": {
+      "code": "0x1F350",
+      "name": "Pear",
+      "symbol": "🍐",
+      "calories": {
+        "small": "28",
+        "medium": "57",
+        "large": "104"
+      },
+      "source": "tree",
+      "source_desc": "Pears come from pear trees",
+      "state": {
+        "raw": "1",
+        "mass": "solid"
+      },
+      "type": "fruit",
+      "can_be_mixed": "1"
+    },
+    "1F351": {
+      "code": "0x1F351",
+      "name": "peach",
+      "symbol": "🍑",
+      "calories": {
+        "small": "20",
+        "medium": "40",
+        "large": "80"
+      },
+      "source": "tree",
+      "source_desc": "Peaches come from peach tree",
+      "state": {
+        "raw": "1",
+        "mass": "solid"
+      },
+      "type": "fruit",
+      "can_be_mixed": "1"
+    },
+    "1F352": {
+      "code": "0x1F352",
+      "name": "Cherries",
+      "symbol": "🍒",
+      "calories": {
+        "small": "20",
+        "medium": "40",
+        "large": "80"
+      },
+      "source": "tree",
+      "source_desc": "Cherries come from cherry tree",
+      "state": {
+        "raw": "1",
+        "mass": "semi-solid"
+      },
+      "type": "fruit",
+      "can_be_mixed": "1"
+    },
+    "1F353": {
+      "code": "0x1F353",
+      "name": "Strawberry",
+      "symbol": "🍓",
+      "calories": {
+        "small": "16",
+        "medium": "32",
+        "large": "64"
+      },
+      "source": "fruit",
+      "source_desc": "Strawberries grow from haulms",
+      "state": {
+        "raw": "1",
+        "mass": "solid"
+      },
+      "type": "fruit",
+      "can_be_mixed": "1"
+    },
+    "1F345": {
+      "code": "0x1F345",
+      "name": "Tomato",
+      "symbol": "🍅",
+      "calories": {
+        "small": "16",
+        "medium": "32",
+        "large": "64"
+      },
+      "source": "plant",
+      "source_desc": "Tomatoes grow from a haulms",
+      "state": {
+        "raw": "1",
+        "mass": "solid"
+      },
+      "type": "fruit",
+      "can_be_mixed": "1"
+    },
+    "1F346": {
+      "code": "0x1F346",
+      "name": "Aubergine",
+      "symbol": "🍆",
+      "calories": {
+        "small": "12",
+        "medium": "24",
+        "large": "48"
+      },
+      "source": "plant",
+      "source_desc": "Aubergines grow in soil",
+      "state": {
+        "raw": "1",
+        "mass": "solid"
+      },
+      "type": "vegetable",
+      "can_be_mixed": "1"
+    },
+    "1F33D": {
+      "code": "0x1F33D",
+      "name": "Corn",
+      "symbol": "🌽",
+      "calories": {
+        "small": "43",
+        "medium": "86",
+        "large": "152"
+      },
+      "source": "plant",
+      "source_desc": "Corn grows from a haulm.",
+      "state": {
+        "raw": "1",
+        "mass": "solid"
+      },
+      "type": "vegetable",
+      "can_be_mixed": "1"
+    },
+    "1F336": {
+      "code": "0x1F336",
+      "name": "hot pepper",
+      "symbol": "🌶",
+      "calories": {
+        "small": "20",
+        "medium": "40",
+        "large": "80"
+      },
+      "source": "plant",
+      "source_desc": "Peppers come from pepper seeds",
+      "state": {
+        "raw": "1",
+        "mass": "solid"
+      },
+      "type": "vegetable",
+      "can_be_mixed": "1"
+    },
+    "1F344": {
+      "code": "0x1F344",
+      "name": "Mushroom",
+      "symbol": "🍄",
+      "calories": {
+        "small": "11",
+        "medium": "22",
+        "large": "44"
+      },
+      "source": "plant",
+      "source_desc": "mushrooms grow in soil",
+      "state": {
+        "raw": "1",
+        "mass": "solid"
+      },
+      "type": "plant",
+      "can_be_mixed": "1"
+    },
+    "1F330": {
+      "code": "0x1F330",
+      "name": "Chestnut",
+      "symbol": "🌰",
+      "calories": {
+        "small": "65",
+        "medium": "131",
+        "large": "262"
+      },
+      "source": "tree",
+      "source_desc": "chestnuts come from chestnut trees",
+      "state": {
+        "raw": "1",
+        "mass": "solid"
+      },
+      "type": "plant",
+      "can_be_mixed": "1"
+    },
+    "1F9C0": {
+      "code": "0x1F9C0",
+      "name": "Cheese",
+      "symbol": "🧀",
+      "calories": {
+        "small": "201",
+        "medium": "402",
+        "large": "804"
+      },
+      "source": "milk",
+      "source_desc": "Cheese is a dairy product.",
+      "state": {
+        "raw": "0",
+        "mass": "solid"
+      },
+      "type": "dairy",
+      "can_be_mixed": "1"
+    },
+    "1F36F": {
+      "code": "0x1F36F",
+      "name": "Honey",
+      "symbol": "🍯",
+      "calories": {
+        "small": "152",
+        "medium": "304",
+        "large": "608"
+      },
+      "source": "tree",
+      "source_desc": "Honey Comes from bees.",
+      "state": {
+        "raw": "1",
+        "mass": "solid"
+      },
+      "type": "bee product",
+      "can_be_mixed": "1"
+    },
+    "1F41F": {
+      "code": "0x1F41F",
+      "name": "Fish",
+      "symbol": "🐟",
+      "calories": {
+        "small": "152",
+        "medium": "304",
+        "large": "608"
+      },
+      "source": "ocean or sea",
+      "source_desc": "fish lives under water",
+      "state": {
+        "raw": "1",
+        "mass": "solid"
+      },
+      "type": "animal",
+      "can_be_mixed": "1"
+    }
+  }
+}

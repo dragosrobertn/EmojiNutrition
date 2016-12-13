@@ -21,21 +21,27 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class GameMenuActivity extends AppCompatActivity {
-    JSONObject saveFile;
     Player player = new Player();
     Food food = new Food();
+    Emoji emoji = new Emoji();
     StringBuilder playerStringBuilder;
     ArrayList<Food> foodList = new ArrayList<>();
+    FoodInventory foodInventory = new FoodInventory();
+    LessonList lessonList = new LessonList();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // Build Food Inventory!
+
+
+
 
         // Check if a saved file exists already, if not, show startActivity
         playerStringBuilder = player.checkPlayerFileExists(GameMenuActivity.this);
 
         if (playerStringBuilder.length() > 0) {
-            player = player.loadPlayerFile(playerStringBuilder);
+            player = player.loadPlayerFile(playerStringBuilder, foodInventory, lessonList);
         }
         else {
             showStartActivity();

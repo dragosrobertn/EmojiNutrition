@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -15,6 +16,8 @@ import android.widget.TextView;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.EventListener;
 
 public class StartActivity extends AppCompatActivity {
     TextView introTextView;
@@ -48,6 +51,7 @@ public class StartActivity extends AppCompatActivity {
         avatarChoiceF.setOnClickListener(chosenGenderListener);
         avatarChoiceM.setOnClickListener(chosenGenderListener);
         saveButton.setOnClickListener(registerPlayer);
+
     }
 
     View.OnClickListener chosenGenderListener = new View.OnClickListener() {
@@ -71,8 +75,10 @@ public class StartActivity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             // Let's do some validation
+            boolean registrationSuccess = false;
+
             if (!(chosenGender == Gender.FEMALE || chosenGender == Gender.MALE)){
-                new AlertDialog.Builder(view.getContext()).setTitle("Gender not chose")
+                new AlertDialog.Builder(view.getContext()).setTitle("Gender not chosen")
                         .setMessage("Please choose a gender.")
                         .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
@@ -90,18 +96,22 @@ public class StartActivity extends AppCompatActivity {
                         }).show();
             }
             else {
-                boolean registrationSuccess = false;
                 try {
                     player.setName(playerName.getText().toString());
                     player.setAge(Integer.parseInt(playerAge.getText().toString()));
                     player.setGender(chosenGender);
-                     registrationSuccess = player.savePlayerFile(player, view.getContext());
+                    registrationSuccess = player.savePlayerFile(player, view.getContext());
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                if (registrationSuccess) finish();
             }
+
+            if (registrationSuccess) registrationDone();
         }
     };
+
+    public void registrationDone(){
+        StartActivity.this.finish();
+    }
 
 }
