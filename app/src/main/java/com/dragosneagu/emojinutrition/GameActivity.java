@@ -23,6 +23,7 @@ public class GameActivity extends AppCompatActivity {
 
     Button lessonButton;
     Button mixButton;
+    Button feedButton;
 
     TextView playerProfileGender;
     @Override
@@ -34,20 +35,21 @@ public class GameActivity extends AppCompatActivity {
 
         lessonButton = (Button) findViewById(R.id.lessonButton);
         mixButton = (Button) findViewById(R.id.mixButton);
+        feedButton = (Button) findViewById(R.id.feedButton);
 
-        mixButton.setTextSize(40f);
-        lessonButton.setTextSize(40f);
+        mixButton.setTextSize(30f);
+        lessonButton.setTextSize(30f);
+        feedButton.setTextSize(30f);
         lessonButton.setText(String.format(getString(R.string.let_s_learn_something), emoji.getEmojiByUnicode(0x1F4D6)));
         mixButton.setText(String.format(getString(R.string.game_mix_ingredients_text), emoji.getEmojiByUnicode(0x1F35B)));
-
-
+        feedButton.setText(String.format(getString(R.string.game_feed_text), emoji.getEmojiByUnicode(0x1F374)));
 
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "Your character isn't hungry at the minute", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });
@@ -100,5 +102,12 @@ public class GameActivity extends AppCompatActivity {
         checkPlayerExists();
         reloadPlayerProfile();
     }
+
+    public void buildFoodInventory(){
+
+
+    }
+
+//    public
 
 }

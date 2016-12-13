@@ -1,18 +1,11 @@
 package com.dragosneagu.emojinutrition;
 
 import android.content.Context;
-import android.util.Log;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
 
 /**
  * Created by dragosneagu on 01/12/2016.
@@ -28,6 +21,7 @@ public class Player {
     private JSONObject jsonPlayer = new JSONObject();
     private JSONArray jsonFood = new JSONArray();
     private JSONArray jsonLessons = new JSONArray();
+    private FileHandler fileHandler;
 
     public Player() {
         this.name = new String();
@@ -88,22 +82,9 @@ public class Player {
     }
 
     public StringBuilder checkPlayerFileExists(Context context) {
-        StringBuilder stringBuilder = new StringBuilder();
-        String line;
-        BufferedReader in = null;
-        try {
-            File fp = new File(context.getFilesDir(), "EMOJI_NUTRITION_SAVE_DATA.json");
-            in = new BufferedReader(new FileReader(fp));
-            while ((line = in.readLine()) != null) {
-                stringBuilder.append(line);
-            }
-        } catch (FileNotFoundException e) {
-            Log.d("ID FNF Exception", e.getMessage());
-        } catch (IOException e) {
-            Log.d("ID IO Exception", e.getMessage());
-        }
+        fileHandler = new FileHandler(new File(context.getFilesDir(), "EMOJI_NUTRITION_SAVE_DATA.json"));
 
-        return stringBuilder;
+        return fileHandler.getStringBuilder();
     }
 
     public Player loadPlayerFile(StringBuilder stringBuilder, FoodInventory foodInventory, LessonList lessonList){
@@ -140,15 +121,8 @@ public class Player {
 
     public boolean savePlayerFile(Player player, Context context) {
         String fileContents = createJSONPlayer(player);
-        try {
-            File fp = new File(context.getFilesDir(), "EMOJI_NUTRITION_SAVE_DATA.json");
-            FileWriter out = new FileWriter(fp);
-            out.write(fileContents);
-            out.close();
-        } catch (IOException e) {
-            Log.d("Error","File error:" + e);
-        }
-        return true;
+        fileHandler = new FileHandler(new File(context.getFilesDir(), "EMOJI_NUTRITION_SAVE_DATA.json"));
+        return fileHandler.writeToFileFromString(fileContents);
     }
 
     public String createJSONPlayer(Player player){
