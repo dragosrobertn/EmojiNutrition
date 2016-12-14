@@ -11,7 +11,17 @@ public class Lesson {
     private String lessonTitle;
     private String lessonContent;
     private String lessonImage;
-    private ArrayList<Food> unlocks;
+    private String lessonSource;
+    private ArrayList<Food> unlocks = new ArrayList<>();
+
+    public Lesson(int lessonID, String lessonTitle, String lessonContent, String lessonImage, String lessonSource, ArrayList<Food> unlocks) {
+        this.lessonID = lessonID;
+        this.lessonTitle = lessonTitle;
+        this.lessonContent = lessonContent;
+        this.lessonImage = lessonImage;
+        this.lessonSource = lessonSource;
+        this.unlocks = unlocks;
+    }
 
     public int getLessonID() {
         return lessonID;
@@ -52,4 +62,13 @@ public class Lesson {
     public void setUnlocks(ArrayList<Food> unlocks) {
         this.unlocks = unlocks;
     }
+
+    public String getLessonSource() {
+        return lessonSource;
+    }
+
+    public void setLessonSource(String lessonSource) {
+        this.lessonSource = lessonSource;
+    }
+
 }

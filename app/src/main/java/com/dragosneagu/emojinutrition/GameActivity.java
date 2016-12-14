@@ -1,5 +1,6 @@
 package com.dragosneagu.emojinutrition;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -10,14 +11,19 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class GameActivity extends AppCompatActivity {
     Player player = new Player();
-    Food food = new Food();
     Emoji emoji = new Emoji();
     StringBuilder playerStringBuilder;
-    ArrayList<Food> foodList = new ArrayList<>();
     FoodInventory foodInventory = new FoodInventory();
     LessonList lessonList = new LessonList();
 
@@ -26,12 +32,16 @@ public class GameActivity extends AppCompatActivity {
     Button feedButton;
 
     TextView playerProfileGender;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        buildLessonList(getApplicationContext());
+        buildFoodInventory(getApplicationContext());
 
         lessonButton = (Button) findViewById(R.id.lessonButton);
         mixButton = (Button) findViewById(R.id.mixButton);
@@ -103,11 +113,79 @@ public class GameActivity extends AppCompatActivity {
         reloadPlayerProfile();
     }
 
-    public void buildFoodInventory(){
+    public void buildFoodInventory(Context context){
+        Map<String, String> calories = new HashMap<>();
+        Map<String, String> foodState = new HashMap<>();
 
+        try {
+            JSONObject jsonF = new JSONObject(loadLocalJSONFile(context, R.raw.rawfood));
+            JSONObject jsonFood = jsonF.getJSONObject("food");
+            for(int i = 0; i < jsonFood.length(); i++){
+                JSONObject jfi = jsonFood.getJSONObject(String.format("%1$s",i));
 
+                JSONObject jfiCalories = jfi.getJSONObject("calories");
+                JSONObject jfiFoodState = jfi.getJSONObject("state");
+
+                calories.put("small", jfiCalories.getString("small"));
+                calories.put("medium", jfiCalories.getString("medium"));
+                calories.put("large", jfiCalories.getString("large"));
+
+                foodState.put("raw", jfiFoodState.getString("raw"));
+                foodState.put("mass", jfiFoodState.getString("mass"));
+
+                Food food = new Food(
+                        jfi.getString("id"),
+                        jfi.getString("code"),
+                        jfi.getString("name"),
+                        jfi.getString("source"),
+                        jfi.getString("source_desc"),
+                        foodState,
+                        calories
+                        );
+                foodInventory.addFood(jfi.getString("id"), food);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        foodInventory.isEmpty();
     }
 
-//    public
+    public void buildLessonList(Context context){
+        try {
+            JSONObject jsonL = new JSONObject(loadLocalJSONFile(context, R.raw.lessons));
+            JSONObject jsonLessons = jsonL.getJSONObject("lessons");
+            for(int i = 0; i < jsonLessons.length(); i++){
+                JSONObject jsonLesson = jsonLessons.getJSONObject(String.format("%1$s",i+1));
+                //TODO
+                ArrayList<Food> unlockableFood = new ArrayList<>();
+                Lesson lesson = new Lesson(
+                        Integer.parseInt(jsonLesson.getString("id")),
+                        jsonLesson.getString("title"),
+                        jsonLesson.getString("content"),
+                        jsonLesson.getString("source"),
+                        jsonLesson.getString("photo_source"),
+                        unlockableFood);
+                lessonList.addLesson(jsonLesson.getString("id"), lesson);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public String loadLocalJSONFile(Context context, int fileID) {
+        String json;
+        try {
+            InputStream is = context.getResources().openRawResource(fileID);
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            json = new String(buffer);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+        return json;
+    }
 
 }
