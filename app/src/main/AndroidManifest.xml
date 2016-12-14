@@ -26,6 +26,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".LessonActivity"
+            android:label="@string/title_activity_lesson"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".DemoLessons"
+            android:label="@string/title_activity_demo_lessons"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".FeedActivity" />
+        <activity android:name=".MixActivity"></activity>
     </application>
 
 </manifest>

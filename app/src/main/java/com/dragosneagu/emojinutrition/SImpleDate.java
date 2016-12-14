@@ -37,6 +37,10 @@ public class SimpleDate{
         return dateFormat.format(date);
     }
 
+    public Date getDate(){
+        return date;
+    }
+
 
 
 

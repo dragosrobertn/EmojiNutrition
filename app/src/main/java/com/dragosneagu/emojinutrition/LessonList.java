@@ -1,5 +1,6 @@
 package com.dragosneagu.emojinutrition;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -38,4 +39,12 @@ public class LessonList {
         return lessonList.isEmpty();
     }
 
+    public ArrayList<Lesson> getListAsArray() {
+        ArrayList<Lesson> arrayList = new ArrayList<>();
+
+        for(Map.Entry<String, Lesson> lesson : lessonList.entrySet()){
+            arrayList.add(lesson.getValue());
+        }
+        return arrayList;
+    }
 }

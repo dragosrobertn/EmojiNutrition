@@ -1,5 +1,8 @@
 package com.dragosneagu.emojinutrition;
 
+import android.widget.ArrayAdapter;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -28,6 +31,14 @@ public class FoodInventory {
 
     public Map<String, Food> getFoodInventory(){
         return inventory;
+    }
+
+    public ArrayList<Food> getArrayList(){
+        ArrayList<Food> f = new ArrayList<>();
+        for(String s : this.getFoodList()){
+            f.add(this.getFromInventoryByCode(s));
+        }
+        return f;
     }
 
     public Food getFromInventoryByCode(String code){

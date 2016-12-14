@@ -17,6 +17,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -40,9 +41,6 @@ public class GameActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        buildLessonList(getApplicationContext());
-        buildFoodInventory(getApplicationContext());
-
         lessonButton = (Button) findViewById(R.id.lessonButton);
         mixButton = (Button) findViewById(R.id.mixButton);
         feedButton = (Button) findViewById(R.id.feedButton);
@@ -54,15 +52,26 @@ public class GameActivity extends AppCompatActivity {
         mixButton.setText(String.format(getString(R.string.game_mix_ingredients_text), emoji.getEmojiByUnicode(0x1F35B)));
         feedButton.setText(String.format(getString(R.string.game_feed_text), emoji.getEmojiByUnicode(0x1F374)));
 
-
+        lessonButton.setOnClickListener(lessonListener);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Your character isn't hungry at the minute", Snackbar.LENGTH_LONG)
+                String message;
+                if (compareTimes(player.getLastFed().getDate(), new Date()) > 30) {
+                    message = "It's time to feed your character!";
+                }
+                else
+                {
+                    message =  "Your character isn't hungry at the minute";
+                }
+                Snackbar.make(view, message, Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });
+
+        feedButton.setOnClickListener(feedListener);
+        mixButton.setOnClickListener(mixListener);
 
         checkPlayerExists();
 
@@ -72,6 +81,33 @@ public class GameActivity extends AppCompatActivity {
         playerProfileGender.setTextSize(120f);
         reloadPlayerProfile();
     }
+
+    View.OnClickListener lessonListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+        Intent lessonActivity = new Intent(GameActivity.this, DemoLessons.class);
+//        startActivityForResult(lessonActivity, 1);
+        startActivityForResult(lessonActivity, 1);
+        }
+    };
+
+    View.OnClickListener feedListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Intent lessonActivity = new Intent(GameActivity.this, FeedActivity.class);
+            startActivityForResult(lessonActivity, 1);
+        }
+    };
+
+    View.OnClickListener mixListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Intent lessonActivity = new Intent(GameActivity.this, MixActivity.class);
+            startActivityForResult(lessonActivity, 1);
+        }
+    };
+
+
 
     @Override
     protected void onResume() {
@@ -113,79 +149,15 @@ public class GameActivity extends AppCompatActivity {
         reloadPlayerProfile();
     }
 
-    public void buildFoodInventory(Context context){
-        Map<String, String> calories = new HashMap<>();
-        Map<String, String> foodState = new HashMap<>();
 
-        try {
-            JSONObject jsonF = new JSONObject(loadLocalJSONFile(context, R.raw.rawfood));
-            JSONObject jsonFood = jsonF.getJSONObject("food");
-            for(int i = 0; i < jsonFood.length(); i++){
-                JSONObject jfi = jsonFood.getJSONObject(String.format("%1$s",i));
+    // http://stackoverflow.com/questions/7676149/compare-only-the-time-portion-of-two-dates-ignoring-the-date-part
+    public int compareTimes(Date d1, Date d2)
+    {
+        int t1, t2;
 
-                JSONObject jfiCalories = jfi.getJSONObject("calories");
-                JSONObject jfiFoodState = jfi.getJSONObject("state");
-
-                calories.put("small", jfiCalories.getString("small"));
-                calories.put("medium", jfiCalories.getString("medium"));
-                calories.put("large", jfiCalories.getString("large"));
-
-                foodState.put("raw", jfiFoodState.getString("raw"));
-                foodState.put("mass", jfiFoodState.getString("mass"));
-
-                Food food = new Food(
-                        jfi.getString("id"),
-                        jfi.getString("code"),
-                        jfi.getString("name"),
-                        jfi.getString("source"),
-                        jfi.getString("source_desc"),
-                        foodState,
-                        calories
-                        );
-                foodInventory.addFood(jfi.getString("id"), food);
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        foodInventory.isEmpty();
-    }
-
-    public void buildLessonList(Context context){
-        try {
-            JSONObject jsonL = new JSONObject(loadLocalJSONFile(context, R.raw.lessons));
-            JSONObject jsonLessons = jsonL.getJSONObject("lessons");
-            for(int i = 0; i < jsonLessons.length(); i++){
-                JSONObject jsonLesson = jsonLessons.getJSONObject(String.format("%1$s",i+1));
-                //TODO
-                ArrayList<Food> unlockableFood = new ArrayList<>();
-                Lesson lesson = new Lesson(
-                        Integer.parseInt(jsonLesson.getString("id")),
-                        jsonLesson.getString("title"),
-                        jsonLesson.getString("content"),
-                        jsonLesson.getString("source"),
-                        jsonLesson.getString("photo_source"),
-                        unlockableFood);
-                lessonList.addLesson(jsonLesson.getString("id"), lesson);
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public String loadLocalJSONFile(Context context, int fileID) {
-        String json;
-        try {
-            InputStream is = context.getResources().openRawResource(fileID);
-            int size = is.available();
-            byte[] buffer = new byte[size];
-            is.read(buffer);
-            is.close();
-            json = new String(buffer);
-        } catch (IOException ex) {
-            ex.printStackTrace();
-            return null;
-        }
-        return json;
+        t1 = (int) (d1.getTime() % (24*60*60*1000L));
+        t2 = (int) (d2.getTime() % (24*60*60*1000L));
+        return ((t2-t1) / 24 / 60 / 60);
     }
 
 }
