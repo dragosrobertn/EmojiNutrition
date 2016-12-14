@@ -74,12 +74,11 @@ public class ListViewAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
-
         HashMap map = list.get(position);
         holder.txtFirst.setText(map.get(FIRST_COLUMN).toString());
         holder.txtSecond.setText(map.get(SECOND_COLUMN).toString());
-        holder.txtThird.setText(map.get(THIRD_COLUMN).toString());
-        holder.txtFourth.setText(map.get(FOURTH_COLUMN).toString());
+        holder.txtThird.setText(map.get(FIRST_COLUMN).toString());
+        holder.txtFourth.setText(map.get(SECOND_COLUMN).toString());
         return convertView;
     }
 

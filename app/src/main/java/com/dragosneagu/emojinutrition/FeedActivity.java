@@ -5,7 +5,6 @@ import static com.dragosneagu.emojinutrition.Constants.SECOND_COLUMN;
 import static com.dragosneagu.emojinutrition.Constants.THIRD_COLUMN;
 import static com.dragosneagu.emojinutrition.Constants.FOURTH_COLUMN;
 
-import android.app.Activity;
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -92,6 +91,7 @@ public class FeedActivity extends AppCompatActivity {
         }
         return json;
     }
+
     private void populateList() {
         list = new ArrayList<>();
 
@@ -106,7 +106,7 @@ public class FeedActivity extends AppCompatActivity {
 
             if (i % 4 == 3) {
                 list.add(temp);
-                temp.clear();
+                temp = new HashMap();
             }
             i++;
         }

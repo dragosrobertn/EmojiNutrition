@@ -1,5 +1,7 @@
 package com.dragosneagu.emojinutrition;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -8,8 +10,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.view.animation.Interpolator;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 public class MixActivity extends AppCompatActivity {
@@ -23,7 +28,10 @@ public class MixActivity extends AppCompatActivity {
     float y = Integer.MAX_VALUE;
     float z = Integer.MAX_VALUE;
 
-    private static final int SHAKE_THRESHOLD = 800;
+    private static final int SHAKE_THRESHOLD = 400;
+    // Just playing with the animation
+    Animation shake, translatecenter, scale_up;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +41,9 @@ public class MixActivity extends AppCompatActivity {
 
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        shake = AnimationUtils.loadAnimation(this, R.anim.shake);
+        translatecenter = AnimationUtils.loadAnimation(this, R.anim.translatecenter);
+        scale_up = AnimationUtils.loadAnimation(this, R.anim.scale_up);
 
         SensorEventListener listener = new SensorEventListener() {
 
@@ -93,7 +104,7 @@ public class MixActivity extends AppCompatActivity {
         ingredient3.setText(emoji.getEmojiByUnicode(0x1F4A7));
         ingredient4.setText(emoji.getEmojiByUnicode(0x1F353));
         resultIngredient.setText(emoji.getEmojiByUnicode(0x1F379));
-
+        resultIngredient.setOnClickListener(resultIngredientListener);
     }
 
     public void combineIngredients(){
@@ -101,6 +112,25 @@ public class MixActivity extends AppCompatActivity {
         ingredient2.setVisibility(View.INVISIBLE);
         ingredient3.setVisibility(View.INVISIBLE);
         ingredient4.setVisibility(View.INVISIBLE);
+
         resultIngredient.setVisibility(View.VISIBLE);
+        resultIngredient.startAnimation(shake);
     }
+
+    public void moveToCenter(Button b, float parentCenterY, float parentCenterX){
+        b.animate().translationX(parentCenterX - b.getWidth()/2).translationY(parentCenterY - b.getHeight()/2);
+    }
+
+    View.OnClickListener resultIngredientListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            new AlertDialog.Builder(getApplicationContext())
+                    .setTitle("You've unlocked a new ingredient!")
+                    .setMessage(String.format("%1$s\n\nYou have unlocked %2$s. %3$s", emoji.getEmojiByUnicode(0x1F379), "Cocktail", "A combination of fruits, sugar and water"))
+                    .setPositiveButton("Wow, thanks!", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                        }
+                    }).show();
+        }
+    };
 }

@@ -1,7 +1,13 @@
 package com.dragosneagu.emojinutrition;
 
+import android.content.Context;
 import android.widget.ArrayAdapter;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -47,5 +53,59 @@ public class FoodInventory {
 
     public boolean isEmpty() {
         return inventory.isEmpty();
+    }
+
+    public FoodInventory build(Context context){
+        FoodInventory foodInventory =  new FoodInventory();
+        Map<String, String> calories = new HashMap<>();
+        Map<String, String> foodState = new HashMap<>();
+
+        try {
+            JSONObject jsonF = new JSONObject(loadLocalJSONFile(context, R.raw.rawfood));
+            JSONObject jsonFood = jsonF.getJSONObject("food");
+            for(int i = 0; i < jsonFood.length(); i++){
+                JSONObject jfi = jsonFood.getJSONObject(String.format("%1$s",i));
+
+                JSONObject jfiCalories = jfi.getJSONObject("calories");
+                JSONObject jfiFoodState = jfi.getJSONObject("state");
+
+                calories.put("small", jfiCalories.getString("small"));
+                calories.put("medium", jfiCalories.getString("medium"));
+                calories.put("large", jfiCalories.getString("large"));
+
+                foodState.put("raw", jfiFoodState.getString("raw"));
+                foodState.put("mass", jfiFoodState.getString("mass"));
+
+                Food food = new Food(
+                        jfi.getString("id"),
+                        jfi.getString("code"),
+                        jfi.getString("name"),
+                        jfi.getString("source"),
+                        jfi.getString("source_desc"),
+                        foodState,
+                        calories
+                );
+                foodInventory.addFood(jfi.getString("id"), food);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return foodInventory;
+    }
+
+    public String loadLocalJSONFile(Context context, int fileID) {
+        String json;
+        try {
+            InputStream is = context.getResources().openRawResource(fileID);
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            json = new String(buffer);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+        return json;
     }
 }
