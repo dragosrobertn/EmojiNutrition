@@ -48,5 +48,6 @@
         android:layout_height="wrap_content"
         android:id="@+id/resultIngredient"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:visibility="invisible" />
 </RelativeLayout>
