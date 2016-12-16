@@ -8,6 +8,8 @@ import static com.dragosneagu.emojinutrition.Constants.FOURTH_COLUMN;
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import org.json.JSONException;
@@ -22,6 +24,7 @@ import java.util.Map;
 public class FeedActivity extends AppCompatActivity {
     FoodInventory foodInventory = new FoodInventory();
     public ArrayList<HashMap> list = new ArrayList<>();
+    ArrayList<View> allButtons;
 
 
     @Override
@@ -34,7 +37,7 @@ public class FeedActivity extends AppCompatActivity {
         ListView lv = (ListView) findViewById(R.id.listview);
 
         populateList();
-        ListViewAdapter adapter = new ListViewAdapter(list, this);
+        ListViewAdapter adapter = new ListViewAdapter(list, this, foodInventory);
         lv.setAdapter(adapter);
 
     }
@@ -99,10 +102,10 @@ public class FeedActivity extends AppCompatActivity {
         int i = 4;
         for(Food f : foodInventory.getArrayList()){
 
-            if (i % 4 == 0) temp.put(FIRST_COLUMN, f.getSymbol());
-            if (i % 4 == 1) temp.put(SECOND_COLUMN, f.getSymbol());
-            if (i % 4 == 2) temp.put(THIRD_COLUMN, f.getSymbol());
-            if (i % 4 == 3) temp.put(FOURTH_COLUMN, f.getSymbol());
+            if (i % 4 == 0) temp.put(FIRST_COLUMN, f.getId());
+            if (i % 4 == 1) temp.put(SECOND_COLUMN, f.getId());
+            if (i % 4 == 2) temp.put(THIRD_COLUMN, f.getId());
+            if (i % 4 == 3) temp.put(FOURTH_COLUMN, f.getId());
 
             if (i % 4 == 3) {
                 list.add(temp);

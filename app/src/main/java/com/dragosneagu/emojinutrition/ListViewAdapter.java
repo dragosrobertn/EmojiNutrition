@@ -5,11 +5,8 @@ import static com.dragosneagu.emojinutrition.Constants.SECOND_COLUMN;
 import static com.dragosneagu.emojinutrition.Constants.THIRD_COLUMN;
 import static com.dragosneagu.emojinutrition.Constants.FOURTH_COLUMN;
 
-import java.security.KeyStore;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
 
 import android.app.Activity;
 import android.view.LayoutInflater;
@@ -25,11 +22,13 @@ import android.widget.TextView;
 public class ListViewAdapter extends BaseAdapter {
     public ArrayList<HashMap> list;
     Activity activity;
+    FoodInventory foodInventory = new FoodInventory();
 
-    public ListViewAdapter(ArrayList<HashMap> list, Activity activity) {
+    public ListViewAdapter(ArrayList<HashMap> list, Activity activity, FoodInventory foodInventory) {
         super();
         this.list = list;
         this.activity = activity;
+        this.foodInventory = foodInventory;
     }
 
     @Override
@@ -75,10 +74,19 @@ public class ListViewAdapter extends BaseAdapter {
         }
 
         HashMap map = list.get(position);
-        holder.txtFirst.setText(map.get(FIRST_COLUMN).toString());
-        holder.txtSecond.setText(map.get(SECOND_COLUMN).toString());
-        holder.txtThird.setText(map.get(FIRST_COLUMN).toString());
-        holder.txtFourth.setText(map.get(SECOND_COLUMN).toString());
+
+        holder.txtFirst.setText(foodInventory.getFromInventoryByCode(map.get(FIRST_COLUMN).toString()).getSymbol());
+        holder.txtFirst.setTag(map.get(FIRST_COLUMN).toString());
+
+        holder.txtSecond.setText(foodInventory.getFromInventoryByCode(map.get(SECOND_COLUMN).toString()).getSymbol());
+        holder.txtFirst.setTag(map.get(SECOND_COLUMN).toString());
+
+        holder.txtThird.setText(foodInventory.getFromInventoryByCode(map.get(THIRD_COLUMN).toString()).getSymbol());
+        holder.txtFirst.setTag(map.get(THIRD_COLUMN).toString());
+
+        holder.txtFourth.setText(foodInventory.getFromInventoryByCode(map.get(FOURTH_COLUMN).toString()).getSymbol());
+        holder.txtFirst.setTag(map.get(FOURTH_COLUMN).toString());
+
         return convertView;
     }
 
