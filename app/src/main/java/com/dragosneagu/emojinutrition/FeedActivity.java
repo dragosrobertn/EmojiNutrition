@@ -6,8 +6,11 @@ import static com.dragosneagu.emojinutrition.Constants.THIRD_COLUMN;
 import static com.dragosneagu.emojinutrition.Constants.FOURTH_COLUMN;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 
@@ -67,7 +70,8 @@ public class FeedActivity extends AppCompatActivity {
                         jfi.getString("source"),
                         jfi.getString("source_desc"),
                         foodState,
-                        calories
+                        calories,
+                        jfi.getString("type")
                 );
                 foodInventory.addFood(jfi.getString("id"), food);
             }
@@ -112,5 +116,26 @@ public class FeedActivity extends AppCompatActivity {
             i++;
         }
 
+    }
+
+    // This is called when an element is pressed so we can show info about that food item
+
+    public void showFoodInfo(View v){
+
+        Food fi = foodInventory.getFromInventoryByCode(v.getTag().toString());
+        AlertDialog alertDialog = new AlertDialog.Builder(v.getContext()).create(); //Read Update
+        alertDialog.setTitle(String.format("%1$s %2$s", fi.getName(), fi.getSymbol()));
+        alertDialog.setMessage(String.format(
+            "%1$s\n" +
+            "%2$s\n\n" +
+            "A regular sized portion has %3$s calories\n" +
+            "Mass: %4$s",
+            fi.getType(),
+            fi.getSourceDescription(),
+            fi.getCaloriesBySize("medium"),
+            fi.getFoodState("mass")));
+
+        alertDialog.setCancelable(true);
+        alertDialog.show();
     }
 }

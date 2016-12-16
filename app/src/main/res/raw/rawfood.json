@@ -11,12 +11,12 @@
         "large": "134"
       },
       "source": "Vine",
-      "source_desc": "Grapes grow on vines",
+      "source_desc": "A grape is a Fruiting berry of the deciduous woody vines of the botanical genus Vitis. Grapes can be eaten fresh as table grapes or they can be used for making wine, jam, juice, jelly, grape seed extract, raisins, vinegar, and grape seed oil. ",
       "state": {
-        "raw": "1",
-        "mass": "mixed"
+        "raw": "Yes",
+        "mass": "Mixed"
       },
-      "type": "fruit",
+      "type": "Fruit",
       "can_be_mixed": "1"
     },
     "1" : {
@@ -26,16 +26,16 @@
       "symbol": "🍈",
       "calories": {
         "small": "15",
-        "medium": "30",
+        "medium": "29",
         "large": "60"
       },
-      "source": "vine",
-      "source_desc": "Melon...",
+      "source": "Ground",
+      "source_desc": "A melon is any of various plants of the family Cucurbitaceae with sweet edible, fleshy Fruit. The word \"melon\" can refer to either the plant or specifically to the Fruit. ",
       "state": {
         "raw": "1",
-        "mass": "solid"
+        "mass": "Solid"
       },
-      "type": "fruit",
+      "type": "Fruit",
       "can_be_mixed": "1"
     },
     "2": {
@@ -48,13 +48,13 @@
         "medium": "30",
         "large": "60"
       },
-      "source": "vine",
-      "source_desc": "Watermelon...",
+      "source": "Ground",
+      "source_desc": "Watermelon (Citrullus lanatus var. lanatus, family Cucurbitaceae) is a vine-like (scrambler and trailer) flowering plant originally from southern Africa. It is a large, sprawling annual plant with coarse, hairy pinnately-lobed leaves and white to yellow flowers.",
       "state": {
         "raw": "1",
         "mass": "solid"
       },
-      "type": "fruit",
+      "type": "Fruit",
       "can_be_mixed": "1"
     },
     "3": {
@@ -68,18 +68,18 @@
         "large": "94"
       },
       "source": "tree",
-      "source_desc": "Oranges come from orange trees",
+      "source_desc": "The tangerine (Citrus tangerina) is an orange-colored citrus fruit that is closely related to, or possibly a type of, mandarin orange (Citrus reticulata).",
       "state": {
         "raw": "1",
         "mass": "solid"
       },
-      "type": "fruit",
+      "type": "Fruit",
       "can_be_mixed": "1"
     },
     "4": {
       "id" : "1F34B",
       "code": "0x1F34B",
-      "name": "lemon",
+      "name": "Lemon",
       "symbol": "🍋",
       "calories": {
         "small": "15",
@@ -87,18 +87,18 @@
         "large": "58"
       },
       "source": "tree",
-      "source_desc": "Lemons come from lemon trees",
+      "source_desc": "The lemon (Citrus × limon) is a species of small evergreen tree native to Asia. The tree's ellipsoidal yellow fruit is used for culinary and non-culinary purposes throughout the world, primarily for its juice, which has both culinary and cleaning uses.",
       "state": {
         "raw": "1",
         "mass": "solid"
       },
-      "type": "fruit",
+      "type": "Fruit",
       "can_be_mixed": "1"
     },
     "5": {
       "id" : "1F34C",
       "code": "0x1F34C",
-      "name": "banana",
+      "name": "Banana",
       "symbol": "🍌",
       "calories": {
         "small": "44",
@@ -106,12 +106,12 @@
         "large": "176"
       },
       "source": "tree",
-      "source_desc": "Bananas come from banana trees",
+      "source_desc": "The banana is an edible fruit, botanically a berry, produced by several kinds of large herbaceous flowering plants in the genus Musa. In some countries, bananas used for cooking may be called plantains, in contrast to dessert bananas.",
       "state": {
         "raw": "1",
         "mass": "solid"
       },
-      "type": "fruit",
+      "type": "Fruit",
       "can_be_mixed": "1"
     },
     "6": {
@@ -121,16 +121,16 @@
       "symbol": "🍍",
       "calories": {
         "small": "25",
-        "medium": "50",
+        "medium": "43",
         "large": "100"
       },
       "source": "tree",
-      "source_desc": "Pineapples come from pineapple trees",
+      "source_desc": "The pineapple is a tropical plant with edible multiple fruit consisting of coalesced berries, also called pineapples, and the most economically significant plant in the Bromeliaceae family.",
       "state": {
         "raw": "1",
         "mass": "solid"
       },
-      "type": "fruit",
+      "type": "Fruit",
       "can_be_mixed": "1"
     },
     "7": {
@@ -140,16 +140,16 @@
       "symbol": "🍎",
       "calories": {
         "small": "26",
-        "medium": "52",
+        "medium": "67",
         "large": "104"
       },
       "source": "tree",
-      "source_desc": "Apples come from apple trees",
+      "source_desc": "The apple tree is a deciduous tree in the rose family best known for its sweet, pomaceous fruit, the apple. It is cultivated worldwide as a fruit tree, and is the most widely grown species in the genus Malus. ",
       "state": {
         "raw": "1",
         "mass": "solid"
       },
-      "type": "fruit",
+      "type": "Fruit",
       "can_be_mixed": "1"
     },
     "8": {
@@ -159,16 +159,16 @@
       "symbol": "🍏",
       "calories": {
         "small": "26",
-        "medium": "52",
+        "medium": "62",
         "large": "104"
       },
       "source": "tree",
-      "source_desc": "Apples come from apple trees",
+      "source_desc": "The apple tree is a deciduous tree in the rose family best known for its sweet, pomaceous fruit, the apple. It is cultivated worldwide as a fruit tree, and is the most widely grown species in the genus Malus. ",
       "state": {
         "raw": "1",
         "mass": "solid"
       },
-      "type": "fruit",
+      "type": "Fruit",
       "can_be_mixed": "1"
     },
     "9": {
@@ -182,31 +182,31 @@
         "large": "104"
       },
       "source": "tree",
-      "source_desc": "Pears come from pear trees",
+      "source_desc": "The pear is any of several tree and shrub species of genus Pyrus /ˈpaɪrəs/, in the family Rosaceae. It is also the name of the pomaceous fruit of the trees. ",
       "state": {
         "raw": "1",
         "mass": "solid"
       },
-      "type": "fruit",
+      "type": "Fruit",
       "can_be_mixed": "1"
     },
     "10": {
       "id" : "1F351",
       "code": "0x1F351",
-      "name": "peach",
+      "name": "Peach",
       "symbol": "🍑",
       "calories": {
         "small": "20",
-        "medium": "40",
+        "medium": "50",
         "large": "80"
       },
-      "source": "tree",
-      "source_desc": "Peaches come from peach tree",
+      "source": "Tree",
+      "source_desc": "The peach is a deciduous tree native to the region of Northwest China between the Tarim Basin and the north slopes of the Kunlun Shan mountains, where it was first domesticated and cultivated.",
       "state": {
         "raw": "1",
         "mass": "solid"
       },
-      "type": "fruit",
+      "type": "Fruit",
       "can_be_mixed": "1"
     },
     "11": {
@@ -219,13 +219,13 @@
         "medium": "40",
         "large": "80"
       },
-      "source": "tree",
-      "source_desc": "Cherries come from cherry tree",
+      "source": "Tree",
+      "source_desc": "A cherry is the fruit of many plants of the genus Prunus, and is a fleshy drupe. The cherry fruits of commerce usually are obtained from a limited number of species such as cultivars of the sweet cherry, Prunus avium.",
       "state": {
         "raw": "1",
         "mass": "semi-solid"
       },
-      "type": "fruit",
+      "type": "Fruit",
       "can_be_mixed": "1"
     },
     "12": {
@@ -238,13 +238,13 @@
         "medium": "32",
         "large": "64"
       },
-      "source": "fruit",
-      "source_desc": "Strawberries grow from haulms",
+      "source": "Bush",
+      "source_desc": "The garden strawberry is a widely grown hybrid species of the genus Fragaria. It is cultivated worldwide for its fruit. The fruit is widely appreciated for its characteristic aroma, bright red color, juicy texture, and sweetness.",
       "state": {
         "raw": "1",
         "mass": "solid"
       },
-      "type": "fruit",
+      "type": "Fruit",
       "can_be_mixed": "1"
     },
     "13": {
@@ -257,13 +257,13 @@
         "medium": "32",
         "large": "64"
       },
-      "source": "plant",
-      "source_desc": "Tomatoes grow from a haulms",
+      "source": "Plant",
+      "source_desc": "The garden strawberry is a widely grown hybrid species of the genus Fragaria (collectively known as the strawberries). It is cultivated worldwide for its fruit.",
       "state": {
         "raw": "1",
         "mass": "solid"
       },
-      "type": "fruit",
+      "type": "Fruit",
       "can_be_mixed": "1"
     },
     "14": {
@@ -276,13 +276,13 @@
         "medium": "24",
         "large": "48"
       },
-      "source": "plant",
-      "source_desc": "Aubergines grow in soil",
+      "source": "Plant",
+      "source_desc": "Eggplant, or aubergine, is a species of nightshade grown for its edible fruit. Eggplant is the common name in North America and Australia, but British English uses aubergine. It is known in South Asia, Southeast Asia and South Africa as brinjal.",
       "state": {
         "raw": "1",
         "mass": "solid"
       },
-      "type": "vegetable",
+      "type": "Fruit",
       "can_be_mixed": "1"
     },
     "15": {
@@ -295,19 +295,19 @@
         "medium": "86",
         "large": "152"
       },
-      "source": "plant",
-      "source_desc": "Corn grows from a haulm.",
+      "source": "Plant",
+      "source_desc": "Maize, also known as corn, is a large grain plant first domesticated by indigenous peoples in Mexico about 10,000 years ago. The six major types of corn are dent corn, flint corn, pod corn, popcorn, flour corn, and sweet corn",
       "state": {
         "raw": "1",
         "mass": "solid"
       },
-      "type": "vegetable",
+      "type": "Vegetable",
       "can_be_mixed": "1"
     },
     "16": {
       "id" : "1F336",
       "code": "0x1F336",
-      "name": "hot pepper",
+      "name": "Chili Pepper",
       "symbol": "🌶",
       "calories": {
         "small": "20",
@@ -315,12 +315,12 @@
         "large": "80"
       },
       "source": "plant",
-      "source_desc": "Peppers come from pepper seeds",
+      "source_desc": "The chili pepper is the fruit of plants from the genus Capsicum, members of the nightshade family, Solanaceae. In Australia, Britain, India, Ireland, New Zealand, Pakistan, South Africa and in other Asian countries, it is usually known simply as chilli.",
       "state": {
         "raw": "1",
         "mass": "solid"
       },
-      "type": "vegetable",
+      "type": "Vegetable",
       "can_be_mixed": "1"
     },
     "17": {
@@ -333,13 +333,13 @@
         "medium": "22",
         "large": "44"
       },
-      "source": "plant",
-      "source_desc": "mushrooms grow in soil",
+      "source": "Soil",
+      "source_desc": "A mushroom is the fleshy, spore-bearing fruiting body of a fungus, typically produced above ground on soil or on its food source. ",
       "state": {
         "raw": "1",
         "mass": "solid"
       },
-      "type": "plant",
+      "type": "Fungi",
       "can_be_mixed": "1"
     },
     "18": {
@@ -352,13 +352,13 @@
         "medium": "131",
         "large": "262"
       },
-      "source": "tree",
-      "source_desc": "chestnuts come from chestnut trees",
+      "source": "Tree",
+      "source_desc": "The chestnut group is a genus of eight or nine species of deciduous trees and shrubs in the beech family Fagaceae, native to temperate regions of the North",
       "state": {
         "raw": "1",
         "mass": "solid"
       },
-      "type": "plant",
+      "type": "Fruit",
       "can_be_mixed": "1"
     },
     "19": {
@@ -371,13 +371,13 @@
         "medium": "402",
         "large": "804"
       },
-      "source": "milk",
-      "source_desc": "Cheese is a dairy product.",
+      "source": "Milk",
+      "source_desc": "Cheese is a food derived from milk that is produced in a wide range of flavors, textures, and forms by coagulation of the milk protein casein. It comprises proteins and fat from milk, usually the milk of cows, buffalo, goats, or sheep.",
       "state": {
         "raw": "0",
         "mass": "solid"
       },
-      "type": "dairy",
+      "type": "Dairy",
       "can_be_mixed": "1"
     },
     "20": {
@@ -387,16 +387,16 @@
       "symbol": "🍯",
       "calories": {
         "small": "152",
-        "medium": "304",
+        "medium": "182",
         "large": "608"
       },
-      "source": "tree",
-      "source_desc": "Honey Comes from bees.",
+      "source": "Bees",
+      "source_desc": "Honey /ˈhʌni/ is a sweet food made by bees foraging nectar from flowers. The variety produced by honey bees is the one most commonly referred to, as it is the type of honey collected by most beekeepers and consumed by people.",
       "state": {
         "raw": "1",
         "mass": "solid"
       },
-      "type": "bee product",
+      "type": "Bee product",
       "can_be_mixed": "1"
     },
     "21": {
@@ -405,17 +405,17 @@
       "name": "Fish",
       "symbol": "🐟",
       "calories": {
-        "small": "152",
-        "medium": "304",
-        "large": "608"
+        "small": "52",
+        "medium": "152",
+        "large": "308"
       },
-      "source": "ocean or sea",
-      "source_desc": "fish lives under water",
+      "source": "Water",
+      "source_desc": "A fish is any member of a group of organisms that consist of all gill-bearing aquatic craniate animals that lack limbs with digits. They form a sister group to the tunicates, together forming the olfactores. ",
       "state": {
         "raw": "1",
         "mass": "solid"
       },
-      "type": "animal",
+      "type": "Animal",
       "can_be_mixed": "1"
     }
   }

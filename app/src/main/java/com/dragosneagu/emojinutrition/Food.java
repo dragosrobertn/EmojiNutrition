@@ -20,13 +20,14 @@ public class Food {
     private String name;
     private String symbol;
     private String source;
+    private String type;
     private String sourceDescription;
     private Map<String, String> calories = new HashMap<>();
     private Map<String, String> foodState = new HashMap<>();
 
     private Emoji emoji = new Emoji();
 
-    public Food(String id, String code, String name, String source, String sourceDescription, Map<String, String> foodState, Map<String, String> calories) {
+    public Food(String id, String code, String name, String source, String sourceDescription, Map<String, String> foodState, Map<String, String> calories, String type) {
         this.code = code;
         this.id = id;
         this.name = name;
@@ -35,6 +36,7 @@ public class Food {
         this.sourceDescription = sourceDescription;
         this.foodState = foodState;
         this.calories = calories;
+        this.type = type;
     }
 
     public String getId() {
@@ -85,15 +87,17 @@ public class Food {
         this.sourceDescription = sourceDescription;
     }
 
-    public AlertDialog newFoodUnlocked (Context context, Food unlockedFood) {
-        AlertDialog.Builder f = new AlertDialog.Builder(context)
-                .setTitle("You've unlocked a new ingredient!")
-                .setMessage(String.format("%1$s\n\nYou have unlocked %2$s. %3$s", unlockedFood.getSymbol(), unlockedFood.getName(), unlockedFood.getSourceDescription()))
-                .setPositiveButton("Wow, thanks!", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                    }
-                });
-        return f.show();
+    public String getCaloriesBySize(String s) {
+        return calories.get(s);
     }
+
+    public String getFoodState(String s) {
+        return foodState.get(s);
+    }
+
+    public String getType() {
+        return type;
+    }
+
 
 }

@@ -79,13 +79,13 @@ public class ListViewAdapter extends BaseAdapter {
         holder.txtFirst.setTag(map.get(FIRST_COLUMN).toString());
 
         holder.txtSecond.setText(foodInventory.getFromInventoryByCode(map.get(SECOND_COLUMN).toString()).getSymbol());
-        holder.txtFirst.setTag(map.get(SECOND_COLUMN).toString());
+        holder.txtSecond.setTag(map.get(SECOND_COLUMN).toString());
 
         holder.txtThird.setText(foodInventory.getFromInventoryByCode(map.get(THIRD_COLUMN).toString()).getSymbol());
-        holder.txtFirst.setTag(map.get(THIRD_COLUMN).toString());
+        holder.txtThird.setTag(map.get(THIRD_COLUMN).toString());
 
         holder.txtFourth.setText(foodInventory.getFromInventoryByCode(map.get(FOURTH_COLUMN).toString()).getSymbol());
-        holder.txtFirst.setTag(map.get(FOURTH_COLUMN).toString());
+        holder.txtFourth.setTag(map.get(FOURTH_COLUMN).toString());
 
         return convertView;
     }

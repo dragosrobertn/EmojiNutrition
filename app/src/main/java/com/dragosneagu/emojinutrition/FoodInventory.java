@@ -35,10 +35,6 @@ public class FoodInventory {
         return inventory.keySet();
     }
 
-    public Map<String, Food> getFoodInventory(){
-        return inventory;
-    }
-
     public ArrayList<Food> getArrayList(){
         ArrayList<Food> f = new ArrayList<>();
         for(String s : this.getFoodList()){
@@ -83,7 +79,8 @@ public class FoodInventory {
                         jfi.getString("source"),
                         jfi.getString("source_desc"),
                         foodState,
-                        calories
+                        calories,
+                        jfi.getString("type")
                 );
                 foodInventory.addFood(jfi.getString("id"), food);
             }
