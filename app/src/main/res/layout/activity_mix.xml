@@ -61,4 +61,12 @@
         android:duplicateParentState="false"
         style="@style/Widget.AppCompat.Button.Borderless"
         />
+
+    <TextView
+        android:text="@string/shake_device_to_combine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/resultIngredient"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/shakeToCombineText" />
 </RelativeLayout>

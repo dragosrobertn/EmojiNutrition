@@ -30,4 +30,5 @@
     <string name="title_activity_demo_lessons">DemoLessons</string>
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="lesson_image_text">Lesson Image</string>
+    <string name="shake_device_to_combine">Shake device to combine</string>
 </resources>

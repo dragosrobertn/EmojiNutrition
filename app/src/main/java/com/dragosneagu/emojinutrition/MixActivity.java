@@ -15,10 +15,12 @@ import android.view.animation.AnimationUtils;
 import android.view.animation.Interpolator;
 import android.widget.Button;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MixActivity extends AppCompatActivity {
     Button ingredient1, ingredient2, ingredient3, ingredient4, resultIngredient;
+    TextView shakeToCombineText;
     Emoji emoji = new Emoji();
     SensorManager sensorManager;
     Sensor accelerometer;
@@ -38,6 +40,7 @@ public class MixActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mix);
         setTitle("Mix Ingredients");
+        shakeToCombineText = (TextView) findViewById(R.id.shakeToCombineText);
 
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
@@ -111,6 +114,7 @@ public class MixActivity extends AppCompatActivity {
         ingredient2.setVisibility(View.INVISIBLE);
         ingredient3.setVisibility(View.INVISIBLE);
         ingredient4.setVisibility(View.INVISIBLE);
+        shakeToCombineText.setVisibility(View.INVISIBLE);
 
         resultIngredient.setVisibility(View.VISIBLE);
         resultIngredient.startAnimation(shake);

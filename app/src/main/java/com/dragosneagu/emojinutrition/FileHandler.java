@@ -17,11 +17,11 @@ public class FileHandler {
     private StringBuilder stringBuilder = new StringBuilder();
     private File file;
 
-    FileHandler(File fp) {
+    public FileHandler(File fp) {
         this.file = fp;
     }
 
-    StringBuilder getStringBuilder(){
+    public StringBuilder getStringBuilder(){
         try {
             BufferedReader in = new BufferedReader(new FileReader(file));
             String line;
@@ -36,7 +36,7 @@ public class FileHandler {
         return stringBuilder;
     }
 
-    boolean writeToFileFromString(String fileContents){
+    public boolean writeToFileFromString(String fileContents){
         boolean success = false;
         try {
             FileWriter out = new FileWriter(file);

@@ -51,7 +51,7 @@ public class FoodInventory {
         return inventory.isEmpty();
     }
 
-    public FoodInventory build(Context context){
+    public FoodInventory buildFoodInventory(Context context){
         FoodInventory foodInventory =  new FoodInventory();
         Map<String, String> calories = new HashMap<>();
         Map<String, String> foodState = new HashMap<>();

@@ -176,7 +176,7 @@ public class LessonsActivity extends AppCompatActivity {
             View rootView = inflater.inflate(R.layout.fragment_demo_lessons, container, false);
             TextView lessonTitle = (TextView) rootView.findViewById(R.id.lessonTitle);
             TextView lessonContent = (TextView) rootView.findViewById(R.id.lessonContent);
-            TextView lessonSource = (TextView) rootView.findViewById(R.id.lessonSource);
+            TextView lessonSource= (TextView) rootView.findViewById(R.id.lessonSource);
             ImageView lessonPhoto = (ImageView) rootView.findViewById(R.id.lessonPhoto);
             Bitmap bmp;
 
