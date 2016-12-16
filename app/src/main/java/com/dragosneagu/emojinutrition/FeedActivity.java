@@ -9,7 +9,6 @@ import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import org.json.JSONException;
@@ -25,7 +24,6 @@ public class FeedActivity extends AppCompatActivity {
     FoodInventory foodInventory = new FoodInventory();
     public ArrayList<HashMap> list = new ArrayList<>();
     ArrayList<View> allButtons;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -1,5 +1,8 @@
 package com.dragosneagu.emojinutrition;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
@@ -13,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.content.Context;
 import android.support.v7.widget.ThemedSpinnerAdapter;
@@ -25,9 +29,11 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 
-public class DemoLessons extends AppCompatActivity {
+public class LessonsActivity extends AppCompatActivity {
     LessonList lessonList = new LessonList();
 
     @Override
@@ -67,6 +73,11 @@ public class DemoLessons extends AppCompatActivity {
             }
         });
 
+        if (android.os.Build.VERSION.SDK_INT > 9)
+        {
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+        }
     }
 
 
@@ -163,9 +174,30 @@ public class DemoLessons extends AppCompatActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_demo_lessons, container, false);
-            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-//            textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
-            textView.setText(LESSON_LIST.getFromListByID(String.format("%1$s", getArguments().getInt(ARG_SECTION_NUMBER))).getLessonContent());
+            TextView lessonTitle = (TextView) rootView.findViewById(R.id.lessonTitle);
+            TextView lessonContent = (TextView) rootView.findViewById(R.id.lessonContent);
+            TextView lessonSource = (TextView) rootView.findViewById(R.id.lessonSource);
+            ImageView lessonPhoto = (ImageView) rootView.findViewById(R.id.lessonPhoto);
+            Bitmap bmp;
+
+            lessonTitle.setText(LESSON_LIST.getFromListByID(String.format("%1$s", getArguments().getInt(ARG_SECTION_NUMBER))).getLessonTitle());
+            lessonContent.setText(LESSON_LIST.getFromListByID(String.format("%1$s", getArguments().getInt(ARG_SECTION_NUMBER))).getLessonContent());
+            lessonSource.setText(LESSON_LIST.getFromListByID(String.format("%1$s", getArguments().getInt(ARG_SECTION_NUMBER))).getLessonSource());
+
+            URL url = null;
+            try {
+                url = new URL(LESSON_LIST.getFromListByID(String.format("%1$s", getArguments().getInt(ARG_SECTION_NUMBER))).getLessonImage());
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
+            try {
+                bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
+                lessonPhoto.setImageBitmap(bmp);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
             return rootView;
         }
     }

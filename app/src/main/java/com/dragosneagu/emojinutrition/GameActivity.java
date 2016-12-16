@@ -1,6 +1,5 @@
 package com.dragosneagu.emojinutrition;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -11,15 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 
 public class GameActivity extends AppCompatActivity {
     Player player = new Player();
@@ -85,7 +76,7 @@ public class GameActivity extends AppCompatActivity {
     View.OnClickListener lessonListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-        Intent lessonActivity = new Intent(GameActivity.this, DemoLessons.class);
+        Intent lessonActivity = new Intent(GameActivity.this, LessonsActivity.class);
 //        startActivityForResult(lessonActivity, 1);
         startActivityForResult(lessonActivity, 1);
         }

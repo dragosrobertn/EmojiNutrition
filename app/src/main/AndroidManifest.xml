@@ -8,6 +8,7 @@
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -27,11 +28,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".LessonActivity"
-            android:label="@string/title_activity_lesson"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".DemoLessons"
+            android:name=".LessonsActivity"
             android:label="@string/title_activity_demo_lessons"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".FeedActivity" />

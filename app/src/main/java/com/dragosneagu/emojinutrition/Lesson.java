@@ -14,7 +14,7 @@ public class Lesson {
     private String lessonSource;
     private ArrayList<Food> unlocks = new ArrayList<>();
 
-    public Lesson(int lessonID, String lessonTitle, String lessonContent, String lessonImage, String lessonSource, ArrayList<Food> unlocks) {
+    public Lesson(int lessonID, String lessonTitle, String lessonContent, String lessonSource, String lessonImage, ArrayList<Food> unlocks) {
         this.lessonID = lessonID;
         this.lessonTitle = lessonTitle;
         this.lessonContent = lessonContent;
