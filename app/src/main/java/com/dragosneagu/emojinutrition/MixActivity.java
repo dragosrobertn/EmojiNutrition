@@ -49,7 +49,6 @@ public class MixActivity extends AppCompatActivity {
 
             @Override
             public void onSensorChanged(SensorEvent event) {
-                // We set the x,y,z first thing when we get them;
 
                 if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
                     long curTime = System.currentTimeMillis();

@@ -6,11 +6,9 @@ import static com.dragosneagu.emojinutrition.Constants.THIRD_COLUMN;
 import static com.dragosneagu.emojinutrition.Constants.FOURTH_COLUMN;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 
@@ -26,13 +24,12 @@ import java.util.Map;
 public class FeedActivity extends AppCompatActivity {
     FoodInventory foodInventory = new FoodInventory();
     public ArrayList<HashMap> list = new ArrayList<>();
-    ArrayList<View> allButtons;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feed_activty);
-        setTitle("Feed your Character");
+        setTitle("Food Information");
         buildFoodInventory(getApplicationContext());
 
         ListView lv = (ListView) findViewById(R.id.listview);
@@ -40,7 +37,6 @@ public class FeedActivity extends AppCompatActivity {
         populateList();
         ListViewAdapter adapter = new ListViewAdapter(list, this, foodInventory);
         lv.setAdapter(adapter);
-
     }
 
     public void buildFoodInventory(Context context){

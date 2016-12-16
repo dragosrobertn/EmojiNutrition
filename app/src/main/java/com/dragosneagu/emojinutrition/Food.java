@@ -79,14 +79,6 @@ public class Food {
         return symbol;
     }
 
-    public void setSymbol(String symbol) {
-        this.symbol = emoji.getEmojiByUnicode(Integer.parseInt(symbol));
-    }
-
-    public void setSourceDescription(String sourceDescription) {
-        this.sourceDescription = sourceDescription;
-    }
-
     public String getCaloriesBySize(String s) {
         return calories.get(s);
     }

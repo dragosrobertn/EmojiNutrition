@@ -17,6 +17,9 @@ import android.widget.TextView;
 
 /**
  * Created by dragosneagu on 03/12/2016.
+ *
+ * This is a custom Adapter to show the food emoji in rows and columns.
+ * What a headache it was to build.
  */
 
 public class ListViewAdapter extends BaseAdapter {

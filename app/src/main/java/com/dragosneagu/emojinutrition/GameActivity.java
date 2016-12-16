@@ -18,11 +18,7 @@ public class GameActivity extends AppCompatActivity {
     StringBuilder playerStringBuilder;
     FoodInventory foodInventory = new FoodInventory();
     LessonList lessonList = new LessonList();
-
-    Button lessonButton;
-    Button mixButton;
-    Button feedButton;
-
+    Button lessonButton, mixButton, feedButton;
     TextView playerProfileGender;
 
     @Override
@@ -77,7 +73,6 @@ public class GameActivity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
         Intent lessonActivity = new Intent(GameActivity.this, LessonsActivity.class);
-//        startActivityForResult(lessonActivity, 1);
         startActivityForResult(lessonActivity, 1);
         }
     };
@@ -97,8 +92,6 @@ public class GameActivity extends AppCompatActivity {
             startActivityForResult(lessonActivity, 1);
         }
     };
-
-
 
     @Override
     protected void onResume() {
@@ -140,7 +133,8 @@ public class GameActivity extends AppCompatActivity {
         reloadPlayerProfile();
     }
 
-
+    // This is not my code, and not because I don't know how to compare dates, but because I wasn't
+    // sure of what format the date objects return (epoch in milliseconds or a date format etc)
     // http://stackoverflow.com/questions/7676149/compare-only-the-time-portion-of-two-dates-ignoring-the-date-part
     public int compareTimes(Date d1, Date d2)
     {

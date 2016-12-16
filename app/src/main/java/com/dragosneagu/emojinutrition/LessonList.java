@@ -23,14 +23,6 @@ public class LessonList {
         }
     }
 
-    public Set<String> getListOfLessons(){
-        return lessonList.keySet();
-    }
-
-    public Map<String, Lesson> getLessonList(){
-        return lessonList;
-    }
-
     public Lesson getFromListByID(String id){
         return lessonList.get(id);
     }
@@ -39,12 +31,4 @@ public class LessonList {
         return lessonList.isEmpty();
     }
 
-    public ArrayList<Lesson> getListAsArray() {
-        ArrayList<Lesson> arrayList = new ArrayList<>();
-
-        for(Map.Entry<String, Lesson> lesson : lessonList.entrySet()){
-            arrayList.add(lesson.getValue());
-        }
-        return arrayList;
-    }
 }
